@@ -65,7 +65,7 @@ public class BuyerProductController {
             for(ProductInfo productInfo : productInfoList){
                 if(productInfo.getCategoryType().equals(productCategory.getCategoryType())){
                     ProductInfoVO productInfoVO = new ProductInfoVO();
-                    //用springboot自带的方法来赋值两个类bean中重叠的的属性，就不用再一一set了
+                    //用springboot自带的方法来赋值两个类似bean中的属性，就不用再一一set了
                     BeanUtils.copyProperties(productInfo, productInfoVO);
                     productInfoVOList.add(productInfoVO);
                 }

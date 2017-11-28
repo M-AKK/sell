@@ -1,0 +1,4 @@
+打包为jar：mvn clean package -Dmaven.test.skip=true
+服务器端运行：java -jar -Dserver.port=80 sell.jar
+指定不同配置文件运行：java -jar -Dserver.port=80 -Dspring.profiles.active=dev(配置名) sell.jar
+redis启动：redis-server.exe redis.windows.conf

@@ -105,7 +105,7 @@ public class SellerProductController {
     }
 
     /**
-     *类目新增页面
+     * 商品新增或修改页面
      * @param productId
      * @param map
      * @return
@@ -125,8 +125,7 @@ public class SellerProductController {
     }
 
     /**
-     * 新增/修改
-     *
+     * 新增/修改方法
      * @param form
      * @param bindingResult
      * @param map

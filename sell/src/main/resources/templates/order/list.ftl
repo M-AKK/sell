@@ -132,12 +132,11 @@
         console.log('收到消息：' + event.data)
         //然后写事件
         $('#mymodal').modal('show');
-
         document.getElementById('notice').play();
     }
 
     websocket.onerror = function () {
-        alert('websocket通信发生错误！');
+        //alert('websocket通信发生错误！');
     }
 
     window.onbeforeunload = function () {

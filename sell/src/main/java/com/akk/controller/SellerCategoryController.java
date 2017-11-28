@@ -43,7 +43,7 @@ public class SellerCategoryController {
     }
 
     /**
-     *展示
+     * 类目展示
      * @param categoryId
      * @param map
      * @return

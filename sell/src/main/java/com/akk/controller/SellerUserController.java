@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
@@ -31,6 +32,8 @@ import java.util.concurrent.TimeUnit;
 @Controller
 @RequestMapping("/seller")
 public class SellerUserController {
+
+
 
     @Autowired
     private SellerService sellerService;
@@ -53,15 +56,16 @@ public class SellerUserController {
         }
 
         SellerInfo sellerInfo = sellerService.findSellerInfoByUsername(username);
-        if(sellerInfo == null && !sellerInfo.getPassword().equals(password)) {
+        if(sellerInfo == null || !sellerInfo.getPassword().equals(password)) {
             map.put("msg", ResultEnum.LGOIN_FAIL.getMessage());
             //map.put("url", "/sell/seller/order/list");
             return new ModelAndView("common/login", map);
         }
-        //2. 设置token至redis(用什么UUID设置)
+        //2. 设置token至redis(用什么UUID设置，这是简单的设置方法，标准的有JTW和OAuth2)
         String token = UUID.randomUUID().toString();
         Integer expire = RedisConstant.EXPIRE;//token过期时间
-        //(key:token_ 为开头的格式String.format是格式设置方法, value=这里先设置为username, 过期时间, 时间单位)
+
+        //(key:已token_ 为开头的格式String.format是格式设置方法, value=这里先设置为username, 过期时间, 时间单位)
         redisTemplate.opsForValue().set(String.format(RedisConstant.TOKEN_PREFIX, token), username, expire, TimeUnit.SECONDS);
 
         //3. 设置token至cookie

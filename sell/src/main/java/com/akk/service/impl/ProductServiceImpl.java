@@ -30,8 +30,7 @@ public class ProductServiceImpl implements ProductService {
     private ProductInfoRepository repository;
 
     @Override
-    //@Cacheable(cacheNames = "findone", key = "#productId")//这是个bug，这里如果缓存了那么前端不管选择什么商品，后台都会默认用第一个商品
-    // key使用动态写法，就会有n个key，每一个商品对应自己的一个key
+    //@Cacheable(cacheNames = "findone", key = "123")//这样写就会有bug，每次前端点什么餐都会选择第一次的选择，这里不能用缓存
     public ProductInfo findOne(String productId) {
         return repository.findOne(productId);
     }
@@ -48,7 +47,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     //如果非要用Cacheput就要保证返回对象一致且序列化
-    //@CachePut(cacheNames = "findone", key = "#productId")估计还是会失效
+    //@CachePut(cacheNames = "findone", key = "123")
     public ProductInfo save(ProductInfo productInfo) {
         return repository.save(productInfo);
     }

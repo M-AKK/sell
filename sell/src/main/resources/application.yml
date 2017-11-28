@@ -4,8 +4,8 @@ spring:
     username: akk
     password: akk6881385
     url: jdbc:mysql://115.159.35.121/sell?characterEncoding=utf-8&useSSL=false
-  jpa:
-    show-sql: true
+  #jpa:
+  #  show-sql: true
   #配置了这个就不会返回为NULL的参数
   jackson:
     default-property-inclusion: non_null
@@ -14,21 +14,16 @@ spring:
     port: 6379
 server:
   context-path: /sell
-#logging:
-#  pattern:
-#    console: "%d - %msg%n"
-##  path: /var/log/tomcat/
-#  file: /var/log/tomcat/sell.log
-#  level: debug
+  #port: 80
 
 wechat:
   mpAppId: wx8b20c44179a091b4
-  mpAppSecret: de419bbffabaa12840f16c5035391a7f
+  mpAppSecret: 0f5e7b78d17ba685726459298132c282
   mchId: 1488013852
   mchKey: uxNWYgnY95q9ieTAggUmMelvqNrhzylf
   keyPath: C:\SoftWare\Weixin\apiclient_cert.p12
-  notifyUrl: http://www.akakakaka.cn:8080/sell/pay/notify
+  notifyUrl: http://www.akakakaka.cn/sell/pay/notify
 
 projectUrl:
-  wechatMpAuthorize: http://www.akakakaka.cn:8080
-  sell: http://www.akakakaka.cn:8080
+  wechatMpAuthorize: http://www.akakakaka.cn
+  sell: http://www.akakakaka.cn

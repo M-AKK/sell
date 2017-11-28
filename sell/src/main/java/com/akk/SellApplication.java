@@ -12,11 +12,11 @@ import org.springframework.cache.annotation.EnableCaching;
 public class SellApplication /*extends SpringBootServletInitializer*/ {
 
 	/*@Override
-	protected SpringApplicationBuilder configure(
-			SpringApplicationBuilder application) {
-		return application.sources(SellApplication.class);
-	}*/
-
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+		// 注意这里要指向原先用main方法执行的Application启动类
+		return builder.sources(SellApplication.class);
+	}
+*/
 	public static void main(String[] args) {
 		SpringApplication.run(SellApplication.class, args);
 	}

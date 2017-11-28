@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.net.URLEncoder;
 
 /**
- * 这里使用第三方SDK的方式获取openid，原始方法参考eclipse的项目
  * Created by Akk_Mac
  * Date: 2017/8/24 下午4:51
  */

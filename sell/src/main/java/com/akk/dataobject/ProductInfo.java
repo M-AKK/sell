@@ -52,7 +52,7 @@ public class ProductInfo implements Serializable{
 
     private Date updateTime;
 
-    @JsonIgnore//对象转Json的时候会忽略，但模板前端传递的就是普通对象，所以不会忽略
+    @JsonIgnore//传递的时候会忽略
     public ProductStatusEnum getProductStatusEnum() {
         return EnumUtil.getByCode(productStatus, ProductStatusEnum.class);
     }

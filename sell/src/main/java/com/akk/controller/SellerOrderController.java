@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,7 +32,6 @@ public class SellerOrderController {
 
     /**
      * 卖家端订单列表
-     *
      * @param page 第几页
      * @param size 一页几条数据
      * @param map
@@ -41,7 +41,8 @@ public class SellerOrderController {
     public ModelAndView list(@RequestParam(value = "page", defaultValue = "1") Integer page,
                              @RequestParam(value = "size", defaultValue = "10") Integer size,
                              Map<String, Object> map) {
-        PageRequest pageRequest = new PageRequest(page - 1, size);//起始页码不一样，要减一才能和方法对住
+        Sort sort = new Sort(Sort.Direction.DESC, "createTime");
+        PageRequest pageRequest = new PageRequest(page - 1, size, sort);//起始页码不一样，要减一才能和方法对住
         Page<OrderDTO> orderDTOPage = orderService.findList(pageRequest);
         map.put("orderDTOPage", orderDTOPage);
         map.put("currentPage", page);
@@ -52,7 +53,6 @@ public class SellerOrderController {
 
     /**
      * 取消订单
-     *
      * @param orderId
      * @param map
      * @return
@@ -77,7 +77,6 @@ public class SellerOrderController {
 
     /**
      * 查询定单详情
-     *
      * @param orderId
      * @param map
      * @return
