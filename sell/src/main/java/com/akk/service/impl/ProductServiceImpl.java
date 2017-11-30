@@ -2,20 +2,17 @@ package com.akk.service.impl;
 
 import com.akk.dataobject.ProductInfo;
 import com.akk.dto.CartDTO;
-import com.akk.enums.PayStatusEnum;
 import com.akk.enums.ProductStatusEnum;
 import com.akk.enums.ResultEnum;
 import com.akk.exception.SellException;
 import com.akk.repository.ProductInfoRepository;
 import com.akk.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CachePut;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
 /**
